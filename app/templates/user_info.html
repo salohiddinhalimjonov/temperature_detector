@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div >
+    <img style="width:350px; height:350px;margin-top:30px;margin-left:780px;"src="/images/{{ user.image }}">
+    <h5 style="text-align:center;margin-top:10px;">First Name : {{ user.first_name }}</h5>
+    <h5 style="text-align:center;">Last Name : {{ user.last_name }}</h5>
+    <h5 style="text-align:center;">Gender : {{ user.gender }}</h5>
+    <h5 style="text-align:center;">Date Joined : {{ user.date_joined }}</h5>
+    <h5 style="text-align:center;">Last Login Time : {{ last_attend }}</h5>
+    </div>
+{% endblock %}

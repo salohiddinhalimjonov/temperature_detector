@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <div style="margin-left:700px;margin-top:150px;">
+        <ul style="list-style-type:none;">
+   {% for x in messages %}
+      <li style="color:tomato;font-size:20px;">{{ x }}</li>
+      {% endfor %}
+    </ul>
+
+     <div class="form-outline">
+
+     <label class="form-label", for="username">Email</label>
+    <input type="email", style="width:400px;", name="username",id='username', class="form-control", placeholder="Enter email" , label="Email">
+
+     </div> <br><br>
+    <div class="form-outline" style="width:400px;">
+    <label for="password" class="form-label">Password</label>
+    <input type="password", name="password",id="password" placeholder="Enter password", class="form-control" label="Password"><br></div>
+    <button type="submit" class="btn btn-primary">Log In</button>
+    <br>
+     <br>
+    <a href="{% url 'register' %}">Don't you have an account?</a> |
+    <a href="{% url 'change_password' %}">Change Password</a> |
+    <a href="{% url 'password_reset' %}">Forgot password?</a>
+    </div>
+
+</form>
+{% endblock %}

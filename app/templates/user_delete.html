@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div style="margin-top:220px;display:flex; justify-content:center;">
+    <h1>{{ user.first_name }}  {{ user.last_name }}, Are you sure you want to sign out ?</h1></div>
+    <form method="post">
+    {% csrf_token %}
+   <div style="display:flex;justify-content:center;margin-top:100px;"> <button class="btn btn-danger btn-lg", type="submit">Sign Out</button>
+   <button class="btn btn-info btn-lg" style="margin-left:20px;"> <a style="text-decoration:none; list-style-type:none;color:white;" href="{% url 'home' %}">Cancel</a></button></div>
+    </form></div>
+{% endblock %}

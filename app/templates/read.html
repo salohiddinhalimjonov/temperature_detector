@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 style="display:flex; justify-content:center; margin-top:100px;">{{ newone.title }}</h1><br><p style="display:flex; justify-content:center;, color:grey;"> Last updated at :{{ newone.date_published }}</p>
+    <p style="padding-top:80px;font-size:20px;position:relative;text-align:center;width:60%;left:20%">{{ newone.description }}</p>
+    <div style="display:flex;justify-content:center; margin-top:110px;">
+        <button  class = "btn btn-info btn-lg"><a style="text-decoration:none;list-style-type:none;color:white;"href="{{newone.original_url}}", target="_blank">GO to Website</a></button><div style="margin-left:20px;"><button class="btn btn-warning btn-lg"><a href="{% url 'home' %}", style="text-decoration:none;color:white;">Back to Home</a></button></div></div>
+{% endblock %}

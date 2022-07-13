@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect, get_object_or_404#
 from .models import AboutUrl, CustomUser
 from django.views import View#class based view
 from .forms import UrlForm
+from django.http import HttpResponse
 from datetime import datetime
 from django.core.paginator import Paginator
 from .filter import ChoiceFilter

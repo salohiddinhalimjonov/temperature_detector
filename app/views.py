@@ -417,38 +417,40 @@ class SignOut(View):
 class RoomTemprature(View):
     def get(self, request):
         template = "temprature.html"
-        #arduino = serial.Serial('/dev/ttyACM0', timeout=1, baudrate=9600)
 
-        # try:
-        #     arduino = serial.Serial('/dev/ttyACM0', timeout=1, baudrate=9600)
-        # except:
-        #     return render(request, template, {"temprature": [0]})
-        # raw_data = ""
-        # count = 0
-        # while count < 1:
-        #     count += 1
-        #     if str(arduino.readline()).startswith("0"):
-        #         count -= 1
-        #         continue
-        #     for x in str(arduino.readline()):
-        #         if x != ".":
-        #             if x.isdigit():
-        #                 raw_data += x
-        #             else:
-        #                 pass
-        #         else:
-        #             break
-        # try:
-        #     if int(raw_data) >= 30:
-        #         arduino.writelines(b'H')
-        #         print("high")
-        #     else:
-        #         arduino.writelines(b'L')
-        #         print("low")
-        #     arduino.close()
-        # except ValueError:
-        #     raw_data = 0
-
-        context = {"temprature": [0, 20], "data": 17}
+        try:
+            arduino = serial.Serial('/dev/ttyACM0', timeout=1, baudrate=9600)
+        except:
+            return render(request, template, {"temprature": [0], "data": 0})
+        raw_data = ""
+        count = 0
+        while count < 1:
+            count += 1
+            if str(arduino.readline()).startswith("0"):
+                count -= 1
+                continue
+            for x in str(arduino.readline()):
+                if x != ".":
+                    if x.isdigit():
+                        raw_data += x
+                    else:
+                        pass
+                else:
+                    break
+        try:
+            if int(raw_data) >= 30:
+                arduino.writelines(b'H')
+                print("high")
+            else:
+                arduino.writelines(b'L')
+                print("low")
+            arduino.close()
+        except ValueError:
+            pass
+        if raw_data.isdigit():
+            data = int(raw_data)
+        else:
+            data = 0
+        context = {"temprature": [0, data], "data": data}
         return render(request, template, context)
-# {% url 'path name' %}
+

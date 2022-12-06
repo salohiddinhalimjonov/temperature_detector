@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-sj!7e(9uuc8&ff11&x@920q#hvppii=71a)b@0^++%o4%-s^+3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['143.198.107.14']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -81,12 +81,8 @@ WSGI_APPLICATION = 'url_save.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'urlsave',
-        'USER': 'urlsave_user',
-        'PASSWORD': 'urlsave_password',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
 

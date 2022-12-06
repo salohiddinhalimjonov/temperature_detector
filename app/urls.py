@@ -1,5 +1,7 @@
 from django.urls import path
-from .views import Home, Create, Update, Delete, Read, RegisterUser, Login, Logout, ChangePassword, HomeImportant, HomeNotImportant, HomeAlmostImportant, PasswordResetRequest, BaseUserDesc, SignOut
+from .views import Home, Create, Update, Delete, Read, RegisterUser, Login, Logout, ChangePassword, HomeImportant,\
+     HomeNotImportant, HomeAlmostImportant, PasswordResetRequest, BaseUserDesc, SignOut, RoomTemprature
+
 from django.contrib.auth.views import LogoutView
 from django.views.generic import TemplateView
 from django.conf import settings
@@ -26,7 +28,8 @@ urlpatterns = [
      path('password_reset_complete/', TemplateView.as_view(template_name="registration/reset_password_done.html"), name="password_reset_complete"),
      path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="registration/password_reset_confirm.html"), name='password_reset_confirm'),
      path('user_info/', BaseUserDesc.as_view(), name='user_info'),
-     path('user_delete/', SignOut.as_view(), name='sign_out')
+     path('user_delete/', SignOut.as_view(), name='sign_out'),
+     path('temprature_detect/', RoomTemprature.as_view(), name="temprature"),
 
 ]
 if settings.DEBUG:

@@ -33,9 +33,7 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 import random
 # MatPlotLib
-import matplotlib
-matplotlib.use('Agg')
-from matplotlib import pyplot as plt
+
 import numpy as np
 
 class RegisterUser(View):
@@ -421,7 +419,7 @@ class RoomTemprature(View):
         try:
             arduino = serial.Serial('/dev/ttyACM0', timeout=1, baudrate=9600)
         except:
-            return render(request, template, {"temprature": [0], "data": 0})
+            return render(request, template, {"temprature": [30], "data": 30})
         raw_data = ""
         count = 0
         while count < 1:
@@ -451,6 +449,7 @@ class RoomTemprature(View):
             data = int(raw_data)
         else:
             data = 0
-        context = {"temprature": [0, data], "data": data}
+        context = {"temprature": [0, 30], "data": 30}
+        print(data)
         return render(request, template, context)
 
